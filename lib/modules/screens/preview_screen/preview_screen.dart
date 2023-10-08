@@ -34,7 +34,8 @@ class _PreviewScreenState extends State<PreviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
         body: Padding(
       padding:
           const EdgeInsets.only(bottom: 8.0, left: 8.0, top: 8.0, right: 8.0),
@@ -56,6 +57,7 @@ class _PreviewScreenState extends State<PreviewScreen> {
           ),
           CarouselSlider.builder(
             options: CarouselOptions(
+              
               enlargeCenterPage: true,
               viewportFraction: 1,
               height: MediaQuery.of(context).size.height / 2,
@@ -132,6 +134,7 @@ class _PreviewScreenState extends State<PreviewScreen> {
           ),
         ],
       ),
-    ));
+    ))
+    ); 
   }
 }

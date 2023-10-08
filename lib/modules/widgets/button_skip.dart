@@ -9,8 +9,9 @@ class SkipButton extends StatelessWidget {
       style: TextButton.styleFrom(
           textStyle: const TextStyle(
               fontSize: 20, color: Color.fromRGBO(87, 169, 255, 1))),
-      onPressed: () {},
+      onPressed: () {Navigator.of(context).pushNamed('/registration');},
       child: const Text("Пропустить"),
+      
     );
   }
 }
