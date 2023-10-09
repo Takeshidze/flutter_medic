@@ -7,6 +7,14 @@ class EmailTextFieldState extends StatefulWidget {
   State<EmailTextFieldState> createState() => _EmailTextFieldStateState();
 }
 
+extension EmailValidator on String {
+  bool isValidEmail() {
+    return RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(this);
+  }
+}
+
 class _EmailTextFieldStateState extends State<EmailTextFieldState> {
   @override
   Widget build(BuildContext context) {
@@ -19,65 +27,55 @@ class _EmailTextFieldStateState extends State<EmailTextFieldState> {
             child: Text(
               "Вход по E-mail",
               style: TextStyle(
-                fontSize: 15,
-                color: Color.fromRGBO(126, 126, 154, 1)
-              ),
+                  fontSize: 15, color: Color.fromRGBO(126, 126, 154, 1)),
               textAlign: TextAlign.start,
-
             ),
           ),
-          
-          const TextField(
-            
+          TextFormField(
+            autovalidateMode: AutovalidateMode.always,
+            validator: (input) {
+              if (input!.isValidEmail()) {
+                var is_enable_button = true;
+              }
+            },
             keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                borderSide: BorderSide(
-                  color: Color.fromRGBO(235, 235, 235, 1),
-                  
-                )
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                
-                borderSide: BorderSide(
-                  color: Color.fromRGBO(235, 235, 235, 1),
-                  
-                )
-              ),
-              hintText: "example@mail.ru",
-              filled: true,
-              fillColor: Color.fromRGBO(245, 245, 249, 1)
-              
-            ),
+            decoration: const InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide(
+                      color: Color.fromRGBO(235, 235, 235, 1),
+                    )),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide(
+                      color: Color.fromRGBO(235, 235, 235, 1),
+                    )),
+                hintText: "example@mail.ru",
+                filled: true,
+                fillColor: Color.fromRGBO(245, 245, 249, 1)),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.05,
           ),
-          const SizedBox(
+          SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-            onPressed: null,
-            style: ButtonStyle(
-              shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10))
-              )),
-              padding: MaterialStatePropertyAll(EdgeInsets.only(top: 15, bottom: 15)),
-              backgroundColor: MaterialStatePropertyAll(Color.fromRGBO(26, 111, 238, 1))
-            ),
-            child: Text(
-              "Далее",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 17
+              onPressed: () {
+                Navigator.of(context).pushNamed('/registration/confirm');
+              },
+              style: const ButtonStyle(
+                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)))),
+                  padding: MaterialStatePropertyAll(
+                      EdgeInsets.only(top: 18, bottom: 18)),
+                  backgroundColor: MaterialStatePropertyAll(
+                      Color.fromRGBO(26, 111, 238, 1))),
+              child: const Text(
+                "Далее",
+                style: TextStyle(color: Colors.white, fontSize: 17),
               ),
             ),
-          ),
           )
-          
-            
-          
         ],
       ),
     );

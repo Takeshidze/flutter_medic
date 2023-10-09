@@ -1,53 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_beginning/modules/widgets/email_text_field.dart';
-
+import 'package:flutter_beginning/modules/widgets/yandex_button_bar.dart';
 
 class RegistrationEmailScreen extends StatelessWidget {
   const RegistrationEmailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding:
+              const EdgeInsets.only(bottom: 48, left: 16, right: 16, top: 16),
           child: Column(
             children: [
               SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.1,
+                height: MediaQuery.of(context).size.height * 0.1,
               ),
               const Row(
                 children: [
                   Text(
                     "🤚   ",
-                    style: TextStyle(
-                      fontSize: 28
-                    ),
+                    style: TextStyle(fontSize: 28),
                   ),
                   Text(
                     "Добро пожаловать!",
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.w600
-                    ),
+                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
                   )
                 ],
               ),
               SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.02,
+                height: MediaQuery.of(context).size.height * 0.02,
               ),
               const Text(
-                    "Войдите, чтобы пользоваться функциями приложения",
-                    style: TextStyle(
-                      fontSize: 15,
-                      
-                    ),
+                "Войдите, чтобы пользоваться функциями приложения",
+                style: TextStyle(
+                  fontSize: 15,
+                ),
               ),
               SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.1,
+                height: MediaQuery.of(context).size.height * 0.1,
               ),
               const EmailTextFieldState(),
-                    
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.2,
+              ),
+              const Expanded(
+                  child: Align(
+                alignment: Alignment.bottomCenter,
+                child: YandexButtonBar(),
+              ))
             ],
           ),
         ),
