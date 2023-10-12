@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_beginning/modules/widgets/otp_input_sizebox.dart';
+import 'package:flutter_beginning/modules/screens/registration_email_screen/widgets/otp_input_sizebox.dart';
+import 'package:flutter_beginning/modules/widgets/text.dart';
 
 class ConfirmationCodeScreen extends StatefulWidget {
   const ConfirmationCodeScreen({super.key});
@@ -27,10 +27,13 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            'Введите код из E-mail',
-            style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+          const MyTextBox(
+            text: 'Введите код из E-mail',
+            fontSize: 17,
+            fontWeight: FontWeight.bold,
+            textAlign: TextAlign.left,
           ),
+
           const SizedBox(
             height: 30,
           ),
@@ -55,7 +58,7 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
                       _fieldThree.text +
                       _fieldFour.text;
                   if (_otp == "1362") {
-                    Navigator.of(context).pushNamed('/');
+                    Navigator.of(context).pushNamed('/create_profile/password');
                   }
                 });
               },

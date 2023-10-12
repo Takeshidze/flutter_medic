@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beginning/modules/widgets/email_text_field.dart';
-import 'package:flutter_beginning/modules/widgets/yandex_button_bar.dart';
+import 'package:flutter_beginning/modules/screens/registration_email_screen/widgets/email_text_field.dart';
+import 'package:flutter_beginning/modules/widgets/text.dart';
+import 'package:flutter_beginning/modules/screens/registration_email_screen/widgets/yandex_button_bar.dart';
 
 class RegistrationEmailScreen extends StatelessWidget {
   const RegistrationEmailScreen({super.key});
@@ -32,12 +33,8 @@ class RegistrationEmailScreen extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
-              const Text(
-                "Войдите, чтобы пользоваться функциями приложения",
-                style: TextStyle(
-                  fontSize: 15,
-                ),
-              ),
+              const MyTextBox(
+                  text: "Войдите, чтобы пользоваться функциями приложения"),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.1,
               ),

@@ -1,7 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_beginning/modules/widgets/button_skip.dart';
-import 'package:flutter_beginning/modules/widgets/medic_logo_picture_shape.dart';
+import 'package:flutter_beginning/modules/screens/preview_screen/widgets/medic_logo_picture_shape.dart';
+import 'package:flutter_beginning/modules/widgets/text.dart';
 
 final items = [
   [
@@ -30,13 +31,12 @@ class PreviewScreen extends StatefulWidget {
 
 class _PreviewScreenState extends State<PreviewScreen> {
   int _current = 0;
-  final CarouselController _controller = CarouselController();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: Padding(
+        child: Scaffold(
+            body: Padding(
       padding:
           const EdgeInsets.only(bottom: 8.0, left: 8.0, top: 8.0, right: 8.0),
       child: Column(
@@ -45,7 +45,9 @@ class _PreviewScreenState extends State<PreviewScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Align(alignment: Alignment.topLeft, child: SkipButton()),
+              Align(
+                  alignment: Alignment.topLeft,
+                  child: SkipButton('/registration')),
               Spacer(),
               Align(
                   alignment: Alignment.topRight,
@@ -57,7 +59,6 @@ class _PreviewScreenState extends State<PreviewScreen> {
           ),
           CarouselSlider.builder(
             options: CarouselOptions(
-              
               enlargeCenterPage: true,
               viewportFraction: 1,
               height: MediaQuery.of(context).size.height / 2,
@@ -75,23 +76,17 @@ class _PreviewScreenState extends State<PreviewScreen> {
               return Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Text(
-                    items[index][0],
-                    style: const TextStyle(
-                        color: Color.fromRGBO(0, 183, 18, 1),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500),
-                  ),
+                  MyTextBox(
+                      text: items[index][0],
+                      color: const Color.fromRGBO(0, 183, 18, 1),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500),
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 20,
                   ),
-                  Text(
-                    items[index][1],
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Color.fromRGBO(147, 147, 150, 1),
-                      fontSize: 14,
-                    ),
+                  MyTextBox(
+                    text: items[index][1],
+                    color: const Color.fromRGBO(147, 147, 150, 1),
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 15,
@@ -134,7 +129,6 @@ class _PreviewScreenState extends State<PreviewScreen> {
           ),
         ],
       ),
-    ))
-    ); 
+    )));
   }
 }
